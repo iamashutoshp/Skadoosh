@@ -20,6 +20,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import GroupAddTwoToneIcon from "@mui/icons-material/GroupAddTwoTone";
 import CottageIcon from "@mui/icons-material/Cottage";
 import { makeStyles } from "@mui/styles";
+import './drawerComp.css'
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -67,18 +68,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const useStyles = makeStyles(theme => ({
-    root: {
-      boxShadow: "none",
-      backgroundColor: "secondary" ,
-      color:"secondary"
-    } 
-  }));
+
 export default function DrawerComponent() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const classes = useStyles();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -88,105 +82,83 @@ export default function DrawerComponent() {
     setOpen(false);
   };
 
+  const handleClickAway=()=>{
+    if(open)
+      setOpen(false);
+  };
+
   const bool=true;
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} className={classes.root} enableColorOnDark
-    //   sx={[
-    //     {
-    //       '&:hover': {
-    //         color: 'red',
-    //         backgroundColor: 'white',
-    //       },
-    //     },
-    //     {bool} && {
-    //       '&:hover': { backgroundColor: 'grey' },
-    //     },
-    //     {bool} && {
-    //       '&:hover': { backgroundColor: 'yellow' },
-    //     }
-    //   ]}
-      >
+      <AppBar position="fixed" open={open} enableColorOnDark onClick={handleClickAway}
+        className="appbar">
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            sx={{ mr: 1, ...(open && { display: "none" }) }}
           >
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
+      
       <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          }
-        }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader>
           <List
             sx={{
               mx: "auto",
-              bgcolor: "primary.main",
-              color: "#fff",
+              // bgcolor: "primary.main",
+              // color: "red",
               width: 200,
-              p: 1,
-              m: 1,
-              borderRadius: 1,
+              // borderRadius: 1,
               textAlign: "left",
               marginLeft: "auto",
             }}
           >
-            <ListItem button>
+            <ListItem button onClick={handleClickAway} className="listitem" color="secondary">
               <ListItemIcon>
                 <CottageIcon />
               </ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </List>
+
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+            <ChevronLeftIcon />
           </IconButton>
         </DrawerHeader>
 
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button onClick={handleClickAway}>
             <ListItemIcon>
               <ChatTwoToneIcon />
             </ListItemIcon>
             <ListItemText primary="Messages" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={handleClickAway}>
             <ListItemIcon>
               <TextSnippetSharpIcon />
             </ListItemIcon>
             <ListItemText primary="Notes" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={handleClickAway}>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Friends" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={handleClickAway}>
             <ListItemIcon>
               <GroupAddTwoToneIcon />
             </ListItemIcon>
@@ -195,6 +167,7 @@ export default function DrawerComponent() {
         </List>
         <Divider />
       </Drawer>
+      
       <Main open={open}>
         <DrawerHeader />
       </Main>
