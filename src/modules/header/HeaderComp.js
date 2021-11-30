@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import DashboardSharpIcon from "@mui/icons-material/DashboardSharp";
 import Grid from "@mui/material/Grid";
-import AccountCircleSharpIcon from "@mui/icons-material/AccountCircleSharp";
+import AccountMenu from "../../components/AccountMenu";
 import "./header.css";
 
 const drawerWidth = 240;
@@ -56,9 +56,7 @@ export default function HeaderComp(props) {
             </Toolbar>
           </Grid>
           <Grid item xs={1}>
-            <IconButton style={{ margin: "2px" }}>
-              <AccountCircleSharpIcon />
-            </IconButton>
+            <AccountMenu/>
           </Grid>
         </Grid>
       </AppBar>
