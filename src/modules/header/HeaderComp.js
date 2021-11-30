@@ -33,6 +33,7 @@ const toolbarStyle = {
   minHeight: "20px",
 };
 export default function HeaderComp(props) {
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CssBaseline />
@@ -56,7 +57,8 @@ export default function HeaderComp(props) {
             </Toolbar>
           </Grid>
           <Grid item xs={1}>
-            <AccountMenu/>
+            {/*login: props for conditional rendering of accounts menu */}
+            <AccountMenu login={0}/>
           </Grid>
         </Grid>
       </AppBar>
