@@ -1,0 +1,8 @@
+.background {
+  background-image: url(../../images/home2.jpg);
+  height: 100vh;
+  width: auto;
+  background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}

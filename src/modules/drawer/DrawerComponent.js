@@ -10,7 +10,6 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -20,7 +19,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import GroupAddTwoToneIcon from "@mui/icons-material/GroupAddTwoTone";
 import CottageIcon from "@mui/icons-material/Cottage";
 import { makeStyles } from "@mui/styles";
-import './drawerComp.css'
+import "./drawerComp.css";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -68,11 +67,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-
 export default function DrawerComponent() {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -82,17 +78,15 @@ export default function DrawerComponent() {
     setOpen(false);
   };
 
-  const handleClickAway=()=>{
-    if(open)
-      setOpen(false);
-  };
-
-  const bool=true;
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex" }} >
       <CssBaseline />
-      <AppBar position="fixed" open={open} enableColorOnDark onClick={handleClickAway}
-        className="appbar">
+      <AppBar
+        position="fixed"
+        open={open}
+        enableColorOnDark
+        className="appbar"
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -105,24 +99,26 @@ export default function DrawerComponent() {
           </IconButton>
         </Toolbar>
       </AppBar>
-      
+
       <Drawer
-        variant="persistent"
         anchor="left"
-        open={open}>
+        open={open}
+        onBackdropClick={handleDrawerClose}>
         <DrawerHeader>
           <List
             sx={{
               mx: "auto",
-              // bgcolor: "primary.main",
-              // color: "red",
               width: 200,
-              // borderRadius: 1,
               textAlign: "left",
               marginLeft: "auto",
             }}
           >
-            <ListItem button onClick={handleClickAway} className="listitem" color="secondary">
+            <ListItem
+              button
+              onClick={handleDrawerClose}
+              className="listitem"
+              color="secondary"
+            >
               <ListItemIcon>
                 <CottageIcon />
               </ListItemIcon>
@@ -137,28 +133,29 @@ export default function DrawerComponent() {
 
         <Divider />
         <List>
-          <ListItem button onClick={handleClickAway}>
+          <ListItem button onClick={handleDrawerClose}>
             <ListItemIcon>
               <ChatTwoToneIcon />
             </ListItemIcon>
             <ListItemText primary="Messages" />
           </ListItem>
 
-          <ListItem button onClick={handleClickAway}>
+          <ListItem button onClick={handleDrawerClose}>
             <ListItemIcon>
               <TextSnippetSharpIcon />
             </ListItemIcon>
             <ListItemText primary="Notes" />
           </ListItem>
 
-          <ListItem button onClick={handleClickAway}>
+          <ListItem button onClick={handleDrawerClose}>
             <ListItemIcon>
               <PeopleIcon />
             </ListItemIcon>
             <ListItemText primary="Friends" />
           </ListItem>
 
-          <ListItem button onClick={handleClickAway}>
+          <ListItem button onClick={handleDrawerClose}
+          >
             <ListItemIcon>
               <GroupAddTwoToneIcon />
             </ListItemIcon>
@@ -167,7 +164,7 @@ export default function DrawerComponent() {
         </List>
         <Divider />
       </Drawer>
-      
+
       <Main open={open}>
         <DrawerHeader />
       </Main>
