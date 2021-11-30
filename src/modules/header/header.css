@@ -1,0 +1,6 @@
+.appbar.MuiAppBar-root {
+    color: #f75b01;
+    background-color: rgb(210, 240, 238);
+    /* opacity: 50%; */
+    align-items: flex-start;
+}

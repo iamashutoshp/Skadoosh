@@ -1,14 +1,10 @@
 import React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -18,8 +14,7 @@ import TextSnippetSharpIcon from "@mui/icons-material/TextSnippetSharp";
 import PeopleIcon from "@mui/icons-material/People";
 import GroupAddTwoToneIcon from "@mui/icons-material/GroupAddTwoTone";
 import CottageIcon from "@mui/icons-material/Cottage";
-import { makeStyles } from "@mui/styles";
-import "./drawerComp.css";
+import HeaderComp from '../header/HeaderComp'
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -40,23 +35,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
     }),
   })
 );
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -80,25 +58,7 @@ export default function DrawerComponent() {
 
   return (
     <Box sx={{ display: "flex" }} >
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        open={open}
-        enableColorOnDark
-        className="appbar"
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 1, ...(open && { display: "none" }) }}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+      <HeaderComp handleDrawerOpen={handleDrawerOpen} open={open}/>
 
       <Drawer
         anchor="left"
