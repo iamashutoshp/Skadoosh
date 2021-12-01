@@ -44,7 +44,7 @@ export default function HeaderComp(props) {
         className="appbar"
       >
         <Grid container spacing={3}>
-          <Grid item xs={11}>
+          <Grid item xs={9} md={11}>
             <Toolbar style={toolbarStyle}>
               <IconButton
                 aria-label="open drawer"
@@ -56,7 +56,7 @@ export default function HeaderComp(props) {
               </IconButton>
             </Toolbar>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={3} md={1}>
             {/*login: props for conditional rendering of accounts menu */}
             <AccountMenu login={0}/>
           </Grid>
