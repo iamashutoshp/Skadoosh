@@ -9,6 +9,7 @@ import DashboardSharpIcon from "@mui/icons-material/DashboardSharp";
 import Grid from "@mui/material/Grid";
 import AccountMenu from "../../components/AccountMenu";
 import "./header.css";
+import Login from "../login/Login";
 
 const drawerWidth = 240;
 
@@ -34,6 +35,7 @@ const toolbarStyle = {
 };
 export default function HeaderComp(props) {
 
+  const isLoggedIn = 0;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <CssBaseline />
@@ -58,7 +60,15 @@ export default function HeaderComp(props) {
           </Grid>
           <Grid item xs={3} md={1}>
             {/*login: props for conditional rendering of accounts menu */}
-            <AccountMenu login={0}/>
+
+            {isLoggedIn?
+            (
+              <AccountMenu/>
+            ):
+            (
+              <Login/>
+            )}
+            
           </Grid>
         </Grid>
       </AppBar>
